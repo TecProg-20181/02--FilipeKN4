@@ -47,6 +47,19 @@ def getGuessedWord(secretWord, lettersGuessed):
 
      return guessed
 
+def getNumberOfDifferentLetters(secretWord):
+    letters = []
+    lettersNumber = 0
+
+    for letter in secretWord:
+        if letter in letters:
+            pass
+        else:
+            letters += letter
+            lettersNumber+=1
+
+    return lettersNumber
+
 def getAvailableLetters(lettersGuessed):
     #import string
     # 'abcdefghijklmnopqrstuvwxyz'
@@ -64,12 +77,15 @@ def endGame(secretWord, lettersGuessed):
     else:
         print 'Sorry, you ran out of guesses. The word was ', secretWord, '.'
 
+
 def hangman(secretWord):
 
     guesses = 8
     lettersGuessed = []
+    lettersNumber = getNumberOfDifferentLetters(secretWord)
     print 'Welcome to the game, Hangam!'
     print 'I am thinking of a word that is', len(secretWord), ' letters long.'
+    print 'The number of different letters in the word is', lettersNumber
     print '-------------'
 
     while  isWordGuessed(secretWord, lettersGuessed) == False and guesses >0:
