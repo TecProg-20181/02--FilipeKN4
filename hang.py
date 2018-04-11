@@ -10,7 +10,7 @@ def loadWords():
     """
     print "Loading word list from file..."
     # inFile: file
-    inFile = open("teste.txt", 'r', 0)
+    inFile = open("words.txt", 'r', 0)
     # line: string
     line = inFile.readline()
     # wordlist: list of strings
@@ -69,6 +69,19 @@ def getNumberOfDifferentLetters(secretWord):
 
     return lettersNumber
 
+def makeChoice(lettersNumber):
+
+
+    print '0 continue game'
+    print 'Press any key to show the number of different letters in the word'
+    option = raw_input('your choice: ')
+
+    if option == '0':
+        print '------------'
+    else:
+        print 'The number of different letters in the word is', lettersNumber
+        print '------------'
+
 def getAvailableLetters(lettersGuessed):
     #import string
     # 'abcdefghijklmnopqrstuvwxyz'
@@ -96,10 +109,10 @@ def hangman():
     lettersNumber = getNumberOfDifferentLetters(secretWord)
     print 'Welcome to the game, Hangam!'
     print 'I am thinking of a word that is', len(secretWord), ' letters long.'
-    print 'The number of different letters in the word is', lettersNumber
     print '-------------'
+    makeChoice(lettersNumber)
 
-    while  isWordGuessed(secretWord, lettersGuessed) == False and guesses >0:
+    while isWordGuessed(secretWord, lettersGuessed) == False and guesses > 0:
         print 'You have ', guesses, 'guesses left.'
         avaliableLetters = getAvailableLetters(lettersGuessed)
 
